@@ -14,4 +14,6 @@ if delta > 0:
 elif delta == 0:
     x = -b / (2 * a)
     print(f"A única raiz real é: x = {x}")
-    
+
+else:
+    print("Não existem raízes reais")

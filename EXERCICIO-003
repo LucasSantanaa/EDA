@@ -4,3 +4,20 @@ import numpy as np
 
 def funcao(x):
     return x**3 - x - 2
+
+def encontrar_raiz(maior, menor, precisao=1e-4):
+    meio = (maior + menor) / 2 
+    print(f"O valor médio é: {meio}")
+
+    y = funcao(meio)
+    print(f"O valor de f(meio) é: {y}")
+    
+    
+    if abs(y) < precisao:
+        return meio
+
+    
+    if y > 0:
+        return encontrar_raiz(meio, menor, precisao)
+    elif y < 0:
+        return encontrar_raiz(maior, meio, precisao)

@@ -20,3 +20,16 @@ dados = [
     {'Temperatura': 25.12, 'Umidade': 54.32, 'Pressao': 1012.03},
     {'Temperatura': 22.18, 'Umidade': 41.78, 'Pressao': 1010.61}
 ]
+
+def calcular_min_max_media(valores):
+    minimo = min(valores)
+    maximo = max(valores)
+    media = sum(valores) / len(valores)
+    return minimo, maximo, media
+
+def exibir_resultados(nome_grandeza, minimo, maximo, media):
+    
+    print(f"{nome_grandeza}:")
+    print(f"- Mínima: {minimo}")
+    print(f"- Máxima: {maximo}")
+    print(f"- Média: {media:.2f}\n")

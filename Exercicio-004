@@ -33,3 +33,25 @@ def exibir_resultados(nome_grandeza, minimo, maximo, media):
     print(f"- Mínima: {minimo}")
     print(f"- Máxima: {maximo}")
     print(f"- Média: {media:.2f}\n")
+
+def analisar_dados(dados):
+    temperaturas = [d['Temperatura'] for d in dados]
+    umidades = [d['Umidade'] for d in dados]
+    pressoes = [d['Pressao'] for d in dados]
+
+    
+    temp_min, temp_max, temp_media = calcular_min_max_media(temperaturas)
+    umid_min, umid_max, umid_media = calcular_min_max_media(umidades)
+    press_min, press_max, press_media = calcular_min_max_media(pressoes)
+
+    
+    print("Resultados para o vigésimo dia com base nos ciclos de 10 minutos:\n")
+    
+    exibir_resultados("Temperatura (°C)", temp_min, temp_max, temp_media)
+    exibir_resultados("Umidade (%)", umid_min, umid_max, umid_media)
+    exibir_resultados("Pressão (hPa)", press_min, press_max, press_media)
+
+    print(f"Quantidade de ciclos: {len(dados)} ciclos de 10 minutos.")
+
+
+analisar_dados(dados)

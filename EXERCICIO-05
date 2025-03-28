@@ -29,3 +29,18 @@ class ArvoreGenealogica:
             if resultado:
                 return resultado
         return None
+    
+    def descendentes(self, nome):
+        membro = self.buscar_membro(nome)
+        if membro:
+            return self._descendentes_recursivo(membro)
+        else:
+            print(f"Membro {nome} não encontrado.")
+            return []
+
+    def _descendentes_recursivo(self, membro):
+        descendentes = []
+        for filho in membro['filhos']:
+            descendentes.append(filho['nome'])
+            descendentes.extend(self._descendentes_recursivo(filho))
+        return descendentes

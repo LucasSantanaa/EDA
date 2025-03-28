@@ -44,3 +44,26 @@ class ArvoreGenealogica:
             descendentes.append(filho['nome'])
             descendentes.extend(self._descendentes_recursivo(filho))
         return descendentes
+    
+    def antepassados(self, nome):
+        for membro in self.membros:
+            caminho_antepassados = self._antepassados_recursivo(membro, nome)
+            if caminho_antepassados:
+                return caminho_antepassados
+        return []
+
+    def _antepassados_recursivo(self, membro, nome, caminho=None):
+        if caminho is None:
+            caminho = []
+        
+        for filho in membro['filhos']:
+            if filho['nome'] == nome:
+                caminho.append(membro['nome'])
+                return caminho
+            
+            resultado = self._antepassados_recursivo(filho, nome, caminho)
+            if resultado:
+                caminho.append(membro['nome'])
+                return caminho
+        
+        return None

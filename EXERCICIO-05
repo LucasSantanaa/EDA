@@ -1,0 +1,15 @@
+class ArvoreGenealogica:
+    def __init__(self):
+        self.membros = []
+
+    def adicionar_membro(self, nome, idade, sexo, pai=None):
+        novo_membro = {"nome": nome, "idade": idade, "sexo": sexo, "filhos": []}
+        
+        if pai is None:
+            self.membros.append(novo_membro)
+        else:
+            membro_pai = self.buscar_membro(pai)
+            if membro_pai:
+                membro_pai['filhos'].append(novo_membro)
+            else:
+                print(f"Erro: Pai {pai} não encontrado.")

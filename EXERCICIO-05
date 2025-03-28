@@ -13,3 +13,19 @@ class ArvoreGenealogica:
                 membro_pai['filhos'].append(novo_membro)
             else:
                 print(f"Erro: Pai {pai} não encontrado.")
+    
+    def buscar_membro(self, nome):
+        for membro in self.membros:
+            resultado = self._buscar_membro_recursivo(membro, nome)
+            if resultado:
+                return resultado
+        return None
+
+    def _buscar_membro_recursivo(self, membro, nome):
+        if membro['nome'] == nome:
+            return membro
+        for filho in membro['filhos']:
+            resultado = self._buscar_membro_recursivo(filho, nome)
+            if resultado:
+                return resultado
+        return None

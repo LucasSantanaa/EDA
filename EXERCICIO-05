@@ -67,3 +67,17 @@ class ArvoreGenealogica:
                 return caminho
         
         return None
+    
+arvore = ArvoreGenealogica()
+
+
+arvore.adicionar_membro("João", 70, "M")
+arvore.adicionar_membro("Carlos", 50, "M", "João")
+arvore.adicionar_membro("Pedro", 30, "M", "Carlos")
+arvore.adicionar_membro("Lucas", 10, "M", "Pedro")
+
+
+print("Descendentes de João:", arvore.descendentes("João"))
+
+
+print("Antepassados de Lucas:", arvore.antepassados("Lucas"))
